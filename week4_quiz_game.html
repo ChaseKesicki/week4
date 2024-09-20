@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <p>What is the capital of Wisconsin?</p>
+
+    <button class="wrong-answer">Bayfield</button>
+    <button id="correct-answer">Madison</button>
+    <button class="wrong-answer">Milwaukee</button>
+
+    <p id="result"></p>
+
+<script>
+    //Make sure to write ID in querySelector parenthases
+    let correctAnswerButton = document.querySelector('#correct-answer')
+
+    //will be used to reset correct button color if wrong answer is chosen
+    let defaultButtonColor = correctAnswerButton.style.background 
+
+    let result = document.querySelector('#result')
+
+    //querySelectorAll lets you choose multiple elements
+    let wrongAnswerButtons = document.querySelectorAll('.wrong-answer')
+
+    //ForEach lets you make an event listener for multiple elements
+    //this responds if wrong answer is chosen
+    wrongAnswerButtons.forEach( function(wrongAnswerButton) {//loop that repeats for each element in wronganswerbuttons list
+
+        
+        wrongAnswerButton.addEventListener('click', function(){
+            result.innerHTML = 'Wrong answer, try again?'
+            correctAnswerButton.style.background = defaultButtonColor //resets color of correct answer
+         } )
+
+    } )
+    //response for right answer being chosen
+    correctAnswerButton.addEventListener('click', function() {
+        result.innerHTML = 'Correct Answer!'
+        correctAnswerButton.style.background = 'cyan'
+    })
+
+</script>
+
+</body>
+</html>

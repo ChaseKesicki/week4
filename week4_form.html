@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Please enter your name</p>
+    <input type="text" id="username"> <!--user enters name-->
+    <button id="save-user-name">Save</button>
+
+    <p id="welcome-message"></p>  <!--welcome message made in the JS side-->
+
+
+<script>
+
+    let saveButton = document.querySelector('#save-user-name') //makes button wor
+    let nameInput = document.querySelector('#username')  //assigns value to name
+    let welcomeMessage = document.querySelector('#welcome-message') 
+
+    saveButton.addEventListener('click', function() {  //when button is clicked...
+        let name = nameInput.value //converts name to value
+
+        if (name.length <= 2) {  //makes sure name is more than 1 letter
+            welcomeMessage.innerHTML = 'Please enter at least 2 letters'
+        } else {
+        welcomeMessage.innerHTML = `Welcome, ${name}!`  //Displays welcome message with users name
+    } })
+
+</script>
+
+
+
+
+</body>
+</html>

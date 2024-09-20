@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Write HTML first so JS can interact with it-->
+
+    <button>Click Here!</button>
+
+<script>
+    //Write java script within script element
+
+    // 'let' names the element.  document.querySelector selects the first element of what is named
+    // 'button' will interact with the first button element
+    let button = document.querySelector('button')
+
+    //addEventListener lets something happen with the element
+    //in this case, when the button is clicked, the function
+    //causes an alert to appear
+    function showAlert() {
+        alert('You clicked the button!')
+        // button.innerHTML = 'You clicked the button!'
+        // button.style.backgroundcolor = 'red'
+    }
+    button.addEventListener('click', showAlert)
+
+</script>
+
+</body>
+</html>

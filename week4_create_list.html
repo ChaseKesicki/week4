@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <p>Enter some text to add to the list</p>
+    <input id="new-text"></input>  <!--Collect text to add to list-->
+    <button id="add-text">Add</button>  <!--Confirm text-->
+
+
+    <ul id="list-of-text"></ul>  <!--List that will be added to with JS-->
+
+    <button id="clear-text">Clear</button>  <!--button that clears all entrys to list-->
+
+<script>
+
+    let textInput = document.querySelector('#new-text')  //text to be added
+    let addButton = document.querySelector('#add-text')  //conformation button
+    let textList = document.querySelector('#list-of-text')  //list
+    let clearButton = document.querySelector('#clear-text') //clears text
+
+    let elementsInList = 0  //starting amount of list entries, will be added to as user enters things
+    let maxElements = 10  //Max entries list should have
+
+    document.addEventListener('keyup', function(){
+        if (event.keyCode == 13) {
+            addButton.click()  //clicks the add but if user pressed enter
+        }
+    })
+
+    clearButton.addEventListener('click', function() {
+        textList.innerHTML = ''  //clears all entries from list when clearButton is clicked
+        elementsInList = 0  //also clears our item counter
+    })
+
+
+    addButton.addEventListener('click', function() {
+        if (elementsInList >= maxElements) {  //checks to make sure no more than 10 entries
+            alert('no more elements can be added')
+            return
+        }
+
+        let newText = textInput.value //reads text
+
+        if (newText.length == 0) {  //makes sure user enters text
+            alert('Enter some text')
+            return
+        }
+
+        if (newText.length > 50) {  //makes sure text does not exceed 50 characters
+            alert('Text may not exceed 50 characters')
+            return
+        }
+
+        let newListItem = document.createElement('li') //creates new li element
+        
+        newListItem.innerHTML = newText //Converts inputed text to li input
+
+        textList.appendChild(newListItem) //adds li element to our list
+
+        textInput.value = '' //clears text input
+        
+        elementsInList++  //keeps track of number of items in list
+    })
+
+
+</script>
+</body>
+</html>
